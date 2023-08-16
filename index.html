@@ -6,7 +6,7 @@
     <title>Home</title>
     <link rel="stylesheet" href="css/all.min.css" />
     <link rel="stylesheet" href="css/master.css" />
-    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/normalize.css" />
     <!-- import font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -27,33 +27,33 @@
               <i class="fa-solid fa-bars"></i>
             </button>
             <ul>
-              <li><a href="#">Contact Us</a></li>
-              <li><a href="#">About Us</a></li>
+              <li><a href="contact.html" target="_blank">Contact Us</a></li>
+              <li><a href="about.html" target="_blank">About Us</a></li>
             </ul>
           </div>
           <div class="right">
             <ul id="logged-out-UI">
               <li><a href="sign-in.html" target="_blank">Sign In</a></li>
-              <li><a href="#" target="_blank">Sign Up</a></li>
+              <li><a href="sign-up.html" target="_blank">Sign Up</a></li>
             </ul>
             <div id="logged-in-UI">
               <div id="info">
                 <b>A</b>
-              <span>Ahmed Hamdy</span>
+                <span>Ahmed Hamdy</span>
               </div>
-            
+
               <a href="#" id="log-out-button" onclick="logoutButtonClicked()"
                 >Log Out</a
               >
             </div>
           </div>
         </nav>
-      </div>  
+      </div>
     </header>
     <!-- end header -->
 
     <!-- add button -->
-    <a href="#" id="addBtn">+</a>
+    <a href="#" id="addBtn" onclick="addBtnClicked()">+</a>
     <!-- //add button// -->
     <!-- start menu box -->
     <div id="menu">
@@ -62,30 +62,30 @@
           <i class="fa-solid fa-arrow-left"></i>
         </div>
         <a href="#">
-          <div class="box">
+          <div class="box active">
             <i class="fa-solid fa-house"></i>
             <p>Home</p>
           </div>
         </a>
-        <a href="">
+        <a href="contact.html" target="_blank">
           <div class="box">
             <img src="images/Vector.png" alt="" />
             <p>Contact Us</p>
           </div>
         </a>
-        <a href=""
+        <a href="about.html" target="_blank"
           ><div class="box">
             <img src="images/Vector (1).png" alt="" />
             <p>About Us</p>
           </div></a
         >
-        <a href="">
+        <a href="sign-up.html" target="_blank" id="sgn-up">
           <div class="box">
             <img src="images/Vector (2).png" alt="" />
             <p>Sign Up</p>
           </div>
         </a>
-        <a href="sign-in.html" target="_blank">
+        <a href="sign-in.html" target="_blank" id="sgn-in">
           <div class="box">
             <img src="images/fluent-mdl2_signin.png" alt="" />
             <p>Sign In</p>
@@ -109,9 +109,94 @@
     <!-- end landing section -->
 
     <!-- start post section -->
+    <section class="posts">
+      <div class="container">
+        <div class="post" dir="auto">
+          <img src="images/Rectangle 1.png" alt="">
+          <div class="post-info">
+            <a href="#"><h2 class="blog-title">تعليق الدراسة مدارس وجامعات سعوديه بسبب سوء أحوال الطقس</h2></a>
+            <p>أعلنت اداره التعليم بالقريات السعودية تعليق الدراسة اليوم الإثنين ,وذلك بناء علي التقارير الواردة من المركز الوطني للأرصاد . وما أقرته لجنه تعليق الدراسة, وحرصا علي سلامة الجميع...</p>
+            <div class="post-publisher">
+              <span>الإثنين,09 يناير 2022</span>
+              <span>حسن دياب</span>
+            </div>
+          </div>
+          <hr>
+        </div>
+        <div class="post" dir="auto">
+          <img src="images/Rectangle 1.png" alt="">
+          <div class="post-info">
+            <h2>تعليق الدراسة مدارس وجامعات سعوديه بسبب سوء أحوال الطقس</h2>
+            <p>أعلنت اداره التعليم بالقريات السعودية تعليق الدراسة اليوم الإثنين ,وذلك بناء علي التقارير الواردة من المركز الوطني للأرصاد . وما أقرته لجنه تعليق الدراسة, وحرصا علي سلامة الجميع.</p>
+            <div class="post-publisher">
+              <span>الإثنين,09 يناير 2022</span>
+              <span>حسن دياب</span>
+            </div>
+
+          </div>
+        </div>
+        <div class="post" dir="auto">
+          <img src="images/Rectangle 1.png" alt="">
+          <div class="post-info">
+            <h2>تعليق الدراسة مدارس وجامعات سعوديه بسبب سوء أحوال الطقس</h2>
+            <p>أعلنت اداره التعليم بالقريات السعودية تعليق الدراسة اليوم الإثنين ,وذلك بناء علي التقارير الواردة من المركز الوطني للأرصاد . وما أقرته لجنه تعليق الدراسة, وحرصا علي سلامة الجميع.</p>
+            <div class="post-publisher">
+              <span>الإثنين,09 يناير 2022</span>
+              <span>حسن دياب</span>
+            </div>
+
+          </div>
+        </div>
+        <!-- <h2 style="text-align: center;">No Current News</h2> -->
+      </div>
+    </section>
+    <section class="contact-box">
+      <div class="container">
+        <div class="box">
+          <div class="social">
+            <a href="contact.html" target="_blank">Contact Us</a>
+            <a href="about.html" target="_blank">About Us</a>
+            <a href="sign-in.html" target="_blank">Sign In</a>
+            <a href="sign-up.html" target="_blank">Sign Up</a>
+          </div>
+          <div class="social">
+            <a href="#">
+              <img src="images/Vector (3).png" alt="">
+              Like on Facebook
+            </a>
+            <a href="#">
+              <img src="images/Vector (4).png" alt="">
+              Follow on Twitter</a>
+            <a href="#">
+              <img src="images/Vector (5).png" alt="">
+              Subscribe on YouTube</a>
+            <a href="#">
+              <img src="images/Vector (6).png" alt="">
+              Follow on Linkedin</a>
+          </div>
+          <div class="social">
+            <a href="#">
+              <img src="images/ph_phone-fill.png" alt="">
+              123456789</a>
+            <a href="mailto:NewsPulse@gmail.com">
+              <img src="images/wpf_message.png" alt="">
+              NewsPulse@gmail.com</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-box">
+          <img src="images/logo-no-background-white 2.png" alt="">
+          <p>All rights reserved 2023</p>
+        </div>
+      </div>
+    </footer>
+    <div class="loading" style="display: none;">Loading&#8230;</div>
+
     <!-- end post section -->
   </body>
   <script src="js/main.js"></script>
   <script src="js/all.js"></script>
-  
 </html>
