@@ -60,26 +60,31 @@ function getAllBlogs() {
     .then((response) => {
       const posts = response.data.data;
       posts.reverse();
-      document.querySelector(".posts .container").innerHTML = "";
-      for (let post of posts) {
-        let img = post.image_url;
-        if (img === "") img = "images/not-found.png";
-        let time = post.updatedAt;
-        time = time.split("T");
-        let content = ` 
-      <div class="post" dir="auto">
-        <img src="${img}" alt="image not found">
-        <div class="post-info">
-        <a href="blog.html"><h2 id="${post._id}" class="blog-title">${post.title}</h2></a>
-          <p>${post.content}...</p>
-          <div class="post-publisher">
-            <span>${time[0]}</span>
-            <span>${post.publisher}</span>
+      if(posts.length !== 0) {
+        document.querySelector(".posts .container").innerHTML = "";
+        for (let post of posts) {
+          let img = post.image_url;
+          if (img === "") img = "images/not-found.png";
+          let time = post.updatedAt;
+          time = time.split("T");
+          let content = ` 
+        <div class="post" dir="auto">
+          <img src="${img}" alt="image not found">
+          <div class="post-info">
+          <a href="blog.html"><h2 id="${post._id}" class="blog-title">${post.title}</h2></a>
+            <p>${post.content}...</p>
+            <div class="post-publisher">
+              <span>${time[0]}</span>
+              <span>${post.publisher}</span>
+            </div>
           </div>
-        </div>
-    </div>
-      `;
-        document.querySelector(".posts .container").innerHTML += content;
+      </div>
+        `;
+          document.querySelector(".posts .container").innerHTML += content;
+        }
+      } else {
+        document.querySelector(".posts .container").innerHTML = `<h2 style="text-align: center; margin-bottom:60px; color:#a9a6a6">No Current News</h2>`;
+
       }
       document.querySelector(".loading").style.setProperty("display", "none");
 
