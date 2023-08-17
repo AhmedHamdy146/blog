@@ -1,3 +1,4 @@
+
 const URL = "https://studentsystem.onrender.com";
 const signUpSubmitBtn = document.getElementById("sign-up-button");
 

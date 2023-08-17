@@ -1,3 +1,4 @@
+
 const URL = "https://studentsystem.onrender.com";
 
 // Get the input element and preview container
