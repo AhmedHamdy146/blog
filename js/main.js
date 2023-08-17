@@ -56,7 +56,9 @@ function userBlogs() {
 function getAllBlogs() {
   document.querySelector(".loading").style.setProperty("display", "block");
   axios
-    .get(`${URL}/api/v1/news`)
+    .get(`${URL}/api/v1/news`, {
+      timeout:30000
+    })
     .then((response) => {
       const posts = response.data.data;
       posts.reverse();
@@ -90,7 +92,13 @@ function getAllBlogs() {
 
     })
     .catch((error) => {
-      alert(error.response.data);
+      if (axios.isCancel(error)) {
+        // Request was canceled due to timeout
+        alert("Request canceled due to timeout try again");
+      }else 
+        alert(error.response.data);
+      document.querySelector(".loading").style.setProperty("display", "none");
+
     });
 }
 function logoutButtonClicked() {

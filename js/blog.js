@@ -1,4 +1,3 @@
-
 const URL = "https://studentsystem.onrender.com";
 const id = localStorage.getItem("id");
 const token = localStorage.getItem("token");
@@ -14,7 +13,9 @@ function getFullBlog(id) {
   document.querySelector(".loading").style.setProperty("display", "block");
 
   axios
-    .get(`${URL}/api/v1/news/${id}`)
+    .get(`${URL}/api/v1/news/${id}`, {
+      timeout: 30000,
+    })
     .then((response) => {
       const blog = response.data.data;
       document.querySelector(".blog-landing-page .container").innerHTML = "";
@@ -46,10 +47,9 @@ function getFullBlog(id) {
     </div>`;
       document.querySelector(".blog-landing-page .container").innerHTML +=
         content;
-        localStorage.setItem("contentBlog" , blog.content)
-        localStorage.setItem("titleBlog" , blog.title)
-        localStorage.setItem("imgBlog" , img)
-      
+      localStorage.setItem("contentBlog", blog.content);
+      localStorage.setItem("titleBlog", blog.title);
+      localStorage.setItem("imgBlog", img);
 
       let box = "none";
       if (username === blog.publisher) {
@@ -62,43 +62,50 @@ function getFullBlog(id) {
           .style.setProperty("display", "none", "important");
       }
       document.querySelector(".loading").style.setProperty("display", "none");
-
     })
     .catch((error) => {
-      alert(error.response.data)
+      if (axios.isCancel(error)) {
+        // Request was canceled due to timeout
+        alert("Request canceled due to timeout try again");
+      } else alert(error.response.data);
       document.querySelector(".loading").style.setProperty("display", "none");
-
     });
 }
 
 function editBtnClicked() {
-  location.href = "update.html"
+  location.href = "update.html";
 }
 
-
-function deleteBtnClicked(){
+function deleteBtnClicked() {
   document.getElementById("Delete").style.setProperty("pointer-events", "none");
   document.querySelector(".loading").style.setProperty("display", "block");
   const header = {
-    "Authorization" : `Bearer ${token}`
-  }
-  axios.delete(`${URL}/api/v1/news/${id}`, {
-    headers:header
-  }).then(response => {
-    alert(response.data)
-    document.getElementById("Delete").style.setProperty("pointer-events", "all");
-    document.querySelector(".loading").style.setProperty("display", "none");
-    location.href = "index.html";
-  
-  
-  }).catch(error => {
-    alert(error.response.data)
-    document.getElementById("Delete").style.setProperty("pointer-events", "all");
-    document.querySelector(".loading").style.setProperty("display", "none");
-    location.href = "index.html";
-
-  
-  })
+    Authorization: `Bearer ${token}`,
+  };
+  axios
+    .delete(`${URL}/api/v1/news/${id}`, {
+      headers: header,
+      timeout: 30000,
+    })
+    .then((response) => {
+      alert(response.data);
+      document
+        .getElementById("Delete")
+        .style.setProperty("pointer-events", "all");
+      document.querySelector(".loading").style.setProperty("display", "none");
+      location.href = "index.html";
+    })
+    .catch((error) => {
+      if (axios.isCancel(error)) {
+        // Request was canceled due to timeout
+        alert("Request canceled due to timeout try again");
+      } else alert(error.response.data);
+      document
+        .getElementById("Delete")
+        .style.setProperty("pointer-events", "all");
+      document.querySelector(".loading").style.setProperty("display", "none");
+      location.href = "index.html";
+    });
 }
 
 function logoutButtonClicked() {
@@ -109,7 +116,7 @@ function logoutButtonClicked() {
       .querySelector(".box-btn")
       .style.setProperty("display", "none", "important");
   }
-  location.href = "index.html"
+  location.href = "index.html";
   showUI();
 }
 function showUI() {
@@ -141,7 +148,4 @@ function showUI() {
     document.getElementById("sgn-up").style.setProperty("display", "block");
   }
 }
-document.addEventListener("click", (e) => {
-  console.log(e.target);
-});
 showUI();
