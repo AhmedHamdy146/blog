@@ -151,6 +151,7 @@ function showUI() {
       .getElementById("logged-in-UI")
       .style.setProperty("display", "none");
     logOut.style.setProperty("display", "flex");
+    location.href = "index.html";
   }
 }
 

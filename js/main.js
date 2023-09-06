@@ -14,6 +14,7 @@ function userBlogs() {
   axios
     .get(`${URL}/api/v1/news`, {
       headers: header,
+      timeout: 50000
     })
     .then((response) => {
       const posts = response.data.data;
@@ -48,7 +49,8 @@ function userBlogs() {
 
     })
     .catch((error) => {
-      alert(error.response.data)
+      alert("Request canceled due to timeout try again");
+      location.reload();
       document.querySelector(".loading").style.setProperty("display", "none");
 
     });
@@ -57,7 +59,7 @@ function getAllBlogs() {
   document.querySelector(".loading").style.setProperty("display", "block");
   axios
     .get(`${URL}/api/v1/news`, {
-      timeout:30000
+      timeout:50000
     })
     .then((response) => {
       const posts = response.data.data;
@@ -92,11 +94,10 @@ function getAllBlogs() {
 
     })
     .catch((error) => {
-      if (axios.isCancel(error)) {
         // Request was canceled due to timeout
         alert("Request canceled due to timeout try again");
-      }else 
-        alert(error.response.data);
+        location.reload();
+
       document.querySelector(".loading").style.setProperty("display", "none");
 
     });
